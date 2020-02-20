@@ -12,6 +12,20 @@ class HashCode:
 	def addLibrary(self, lib):
 		self.libraries.append(lib)
 
+	def removeLib(self, lib):
+		self.libraries.remove(lib)
+
+	def getMostValuableLib(self):
+		maxVal = 0
+		maxLib = None
+		for l in self.libraries:
+			totalValue = l.getTotalValue
+			if totalValue > maxVal:
+				maxVal = totalValue
+				maxLib = l
+
+		return maxLib
+
 	def removeBookFromEveryLibs(self, bookId):
 		for l in self.libraries:
 			l.removeBook(bookId)
@@ -44,6 +58,9 @@ class LibraryClass:
 	def addBook(self, book):
 		self.books.append(book)
 
+	def removeBook(self, book):
+		self.books.remove(book)
+
 	def check(self):
 		return len(self.books) == self.numOfBooks
 
@@ -53,14 +70,14 @@ class LibraryClass:
 			total += b.score
 		return total
 
-	def getMostValuable(self):
+	def getMostValuableBook(self):
 		score = 0
 		bookId = 0
 		for b in self.books:
 			if score < b.score:
 				score = b.score
 				bookId = b.bookId
-		return bookId, score
+		return b
 
 	def __str__(self):
 		books = ""
