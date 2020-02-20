@@ -4,8 +4,11 @@
 from libraryClass import Solution
 
 
-def export(solution: Solution, filename: str):
+def export(order, scanning, filename: str):
 	file = open(filename + ".txt","w+")
+
+	print(order)
+	print(scanning)
 
 	file.write(str(len(solution.scanned_books)))
 

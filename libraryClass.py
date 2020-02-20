@@ -69,17 +69,17 @@ class LibraryClass:
 	def getTotalValue(self):
 		total = 0
 		for b in self.books:
-			total += b.score
+			total += int(b.score)
 		return total
 
 	def getAverageValue(self):
-		return self.getTotalValue / len(self.books)
+		return self.getTotalValue() / len(self.books)
 
 	def getMostValuableBook(self):
 		score = 0
 		bookId = 0
 		for b in self.books:
-			if score < b.score:
+			if int(score) < int(b.score):
 				score = b.score
 				bookId = b.bookId
 		return b

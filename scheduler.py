@@ -5,14 +5,17 @@ from libraryClass import *
 # actual scheduler
 
 def getBestLibToSignUp(hashCode, daysLeft):
+	print(hashCode.libraries)
 	bestScore = 0
-	bestLib = None
+	bestLib = object()
+
 	for lib in hashCode.libraries:
-		worthiness = lib.getAverageValue() * (daysLeft - lib.timeToSignup) * lib.maxBooksPerDay
+		worthiness = lib.getAverageValue() * (daysLeft - int(lib.timeToSignup)) * int(lib.maxBooksPerDay)
 		if bestScore < worthiness:
 			bestScore = worthiness
 			bestLib = lib
-	return lib
+
+	return bestLib
 
 
 def scheduler(hashCode):
@@ -20,16 +23,16 @@ def scheduler(hashCode):
 	libsOrder = []
 	libs = {} # {lib:[books]}
 	signing = 0
-	libReady = -1 
-	for day in hashCode.timeLimit:
-		daysLeft = timeLimit - day
+	libReady = -1
+	for day in range(hashCode.timeLimit):
+		daysLeft = hashCode.timeLimit - day
 		if signing <= 0:
 			libReady += 1
 			library = getBestLibToSignUp(hashCode, daysLeft)
 			libsOrder.append(library)
 			libs[library.libId] = []
 			hashCode.removeLib(library)
-			signing = library.timeToSignup
+			signing = int(library.timeToSignup)
 
 		for i in range(libReady):
 			book = libsOrder[i].getMostValuableBook()
@@ -41,5 +44,5 @@ def scheduler(hashCode):
 		signing -= 1
 
 	libOutput = [l.libId for l in libsOrder]
-	
+
 	return (libOutput, libs)
