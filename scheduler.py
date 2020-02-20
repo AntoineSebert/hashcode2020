@@ -2,10 +2,7 @@
 
 from libraryClass import *
 
-# actual scheduler
-
 def getBestLibToSignUp(hashCode, daysLeft):
-	print(hashCode.libraries)
 	bestScore = 0
 	bestLib = object()
 

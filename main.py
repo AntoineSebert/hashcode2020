@@ -5,7 +5,7 @@ from scheduler import scheduler
 
 if __name__ == "__main__":
 	p = Parser()
-	hashcode = p.parse('data/a_example.txt')
+	hashcode = p.parse('data/b_read_on.txt')
 
 	order, scanning = scheduler(hashcode)
 
