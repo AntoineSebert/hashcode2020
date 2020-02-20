@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 
 
-def export(result: Solution, filename: str):
+from libraryClass import Solution
+
+
+def export(solution: Solution, filename: str):
 	file = open(filename + ".txt","w+")
 
-	file.write(result.libraries.length())
+	file.write(str(len(solution.scanned_books)))
 
-	for library in result.libraries:
-		file.write(library.id() + " " + library.books.length())
+	for library, books in solution.scanned_books:
+		file.write(library + " " + len(book))
 
-	for book in library.books:
-		file.write(book.bookId() + " ")
+		for book in books:
+			file.write(book.bookId() + " ")
 
 	file.close()
