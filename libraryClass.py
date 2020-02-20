@@ -114,10 +114,19 @@ class Solution:
 	"""
 	time: List = []
 	ellasped_time: int = 0
+	scanned_books: Dict = {}
 
 
-	def add_entry(self, scanning: dict):
-		self.time[-1].append(scanning)
+	def add_entry(self, day: dict):
+		self.time[-1].append(day)
+
+		for library_id, books in day:
+			if library_id not in self.scanned_books:
+				self.scanned_books[library_id] = [book.id for book in books]
+			else:
+				for book in books:
+					if book.id not in self.scanned_books[library_id]:
+						self.scanned_books[library_id].append(book.id)
 
 
 	def next(self):
