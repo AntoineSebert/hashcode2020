@@ -36,11 +36,13 @@ def scheduler(hashCode):
 
 		for i in range(libReady):
 			book = libsOrder[i].getMostValuableBook()
-			libs[libsOrder[i].libId].append(book.bookId)
+			libs[libsOrder[i].libId].append(int(book.bookId))
 			hashCode.removeBookFromEveryLibs(book.bookId)
 			for l in libsOrder:
 				l.removeBookFromId(book.bookId)
 
 		signing -= 1
 
+
+	libOutput = [int(l.libId) for l in libsOrder]
 	return (libOutput, libs)
