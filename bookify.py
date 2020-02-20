@@ -11,16 +11,16 @@ class Parser:
 	def parse(self, filename):
 
 		with open(filename) as f:
-			data = f.readlines()		# each element in data is line from input file
-
+			#data = f.readlines()		# each element in data is line from input file
+			data = f.read().splitlines().rstrip() 
 
 		# read in header info
 
-		header = data[0].split(' ') 	#	read first line into books, libraries, days
+		header = data[0].split(' ').rstrip() 	#	read first line into books, libraries, days
 		timeLimit = header[2]			# set days
 		numOfLibraries = header[1]		# set num libraries
 
-		bookdata = data[1].split(' ')	# book scores
+		bookdata = data[1].split(' ').rstrip()	# book scores
 
 
 		## build up library list
@@ -29,12 +29,12 @@ class Parser:
 		for i in range(2, len(data), 2):
 
 
-			library = data[i].split(' ')
+			library = data[i].split(' ').rstrip()
 			numOfBooks = library[0]
 			timeToSignup = library[1]
 			maxBooksPerDay = library[2]
 
-			bookline = data[i+1].split(' ')
+			bookline = data[i+1].split(' ').rstrip()
 			librarybooks = []
 
 			## build book objects for given library
