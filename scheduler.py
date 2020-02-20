@@ -40,4 +40,6 @@ def scheduler(hashCode):
 
 		signing -= 1
 
+	libOutput = [l.libId for l in libsOrder]
 	
+	return (libOutput, libs)
