@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-def export(result: HashCode, filename: str) -> bool:
+def export(result: Solution, filename: str):
 	file = open(filename + ".txt","w+")
 
 	file.write(result.libraries.length())
