@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-import sys
-import argparse
 from libraryClass import *
 
 class Parser:
@@ -10,7 +7,7 @@ class Parser:
 		self.filename = filename
 		self.hashcode = None
 
-		
+
 	def parse(self, filename):
 
 		with open(filename) as f:
@@ -21,10 +18,10 @@ class Parser:
 
 		header = data[0].split(' ') 	#	read first line into books, libraries, days
 		timeLimit = header[2]			# set days
-		numOfLibraries = header[1]		# set num libraries 
+		numOfLibraries = header[1]		# set num libraries
 
 		bookdata = data[1].split(' ')	# book scores
-		
+
 
 		## build up library list
 		libraries = []
@@ -48,17 +45,17 @@ class Parser:
 			libId = (i-2)
 
 			# libraryclass init : def __init__(self, numOfBooks, libId, timeToSignup, maxBooksPerDay):
-			
+
 			lib = LibraryClass(numOfBooks, libId, timeToSignup, maxBooksPerDay)
 			lib.books = librarybooks
 
 			libraries.append(lib)
 
 
-		
+
 		# 	def __init__(self, numOfLibraries):
 		hashcode = HashCode(numOfLibraries)
-		hashcode.timeLimit = timeLimit
+		hashcode.timeLimit = int(timeLimit)
 		hashcode.libraries = libraries
 
 		self.hashcode = hashcode
@@ -67,7 +64,7 @@ class Parser:
 
 
 
-
+"""
 if __name__ == "__main__":
 	parser = Parser()
 	hashcode = parser.parse(parser.filename)
@@ -77,3 +74,4 @@ if __name__ == "__main__":
 	for i in hashcode.libraries[1].books:
 		print(str(i.bookId)+' '+str(i.score))
 	#print(hashcode.check())
+"""
