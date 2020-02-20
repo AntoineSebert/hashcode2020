@@ -14,3 +14,28 @@ def cost(state: Solution) -> int:
 
 
 # actual scheduler
+
+class scheduler:
+	hashCode = None
+	scanningLibs = []
+
+	toScan = {}
+
+	def addToScan(self, libId, books):
+		self.scanningLibs.append(libId)
+		self.toScan[libId] = books
+
+	def getSubmissionFile(self):
+		output = f"{len(scanningLibs)}\n"
+
+		for libs in self.scanningLibs:
+			output += f"{libs} {len(self.toScan[libs])}\n"
+			for book in self.toScan[libs]:
+				output += f"{book} "
+		return output
+
+	def compute(self):
+		pass
+
+	def __init__(self, hashCode):
+		self.hashCode = hashCode
