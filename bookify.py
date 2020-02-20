@@ -12,7 +12,7 @@ class Parser:
 
 		with open(filename) as f:
 			#data = f.readlines()		# each element in data is line from input file
-			data = f.read().splitlines().rstrip() 
+			data = f.read().splitlines() 
 
 		# read in header info
 
