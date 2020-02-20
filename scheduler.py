@@ -5,9 +5,9 @@ from libraryClass import *
 # actual scheduler
 
 def scheduler(hashCode):
-	# get the lib with the most valuable books first
+	# get the lib with the best cost function
 	libsOrder = []
 	libs = {} # {lib:[books]}
 	for day in hashCode.timeLimit:
 		daysLeft = timeLimit - day
-		lib
+		pass
