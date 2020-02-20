@@ -26,7 +26,7 @@ def scheduler(hashCode):
 	libReady = -1
 	for day in range(hashCode.timeLimit):
 		daysLeft = hashCode.timeLimit - day
-		if signing <= 0:
+		if signing <= 0 and len(hashCode.libraries) > 0:
 			libReady += 1
 			library = getBestLibToSignUp(hashCode, daysLeft)
 			libsOrder.append(library)
@@ -42,7 +42,5 @@ def scheduler(hashCode):
 				l.removeBookFromId(book.bookId)
 
 		signing -= 1
-
-	libOutput = [l.libId for l in libsOrder]
 
 	return (libOutput, libs)
