@@ -16,11 +16,11 @@ class Parser:
 
 		# read in header info
 
-		header = data[0].split(' ').rstrip() 	#	read first line into books, libraries, days
+		header = [i.rstrip() for i in data[0].split(' ')] 	#	read first line into books, libraries, days
 		timeLimit = header[2]			# set days
 		numOfLibraries = header[1]		# set num libraries
 
-		bookdata = data[1].split(' ').rstrip()	# book scores
+		bookdata = [i.rstrip() for i in data[1].split(' ')]	# book scores
 
 
 		## build up library list
@@ -29,12 +29,12 @@ class Parser:
 		for i in range(2, len(data), 2):
 
 
-			library = data[i].split(' ').rstrip()
+			library = [i.rstrip() for i in data[i].split(' ')]
 			numOfBooks = library[0]
 			timeToSignup = library[1]
 			maxBooksPerDay = library[2]
 
-			bookline = data[i+1].split(' ').rstrip()
+			bookline = [i.rstrip() for i in data[i+1].split(' ')]
 			librarybooks = []
 
 			## build book objects for given library
