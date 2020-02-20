@@ -64,6 +64,14 @@ class LibraryClass:
 				bookId = b.bookId
 		return bookId, score
 
+	"""
+	_reverse == False : ascending
+	_reverse == True : descending
+	I guess
+	"""
+	def sort_books(self, _reverse: bool = False):
+		return sorted(books, key=lambda book : book.bookId, reverse=_reverse)
+
 	def __str__(self):
 		books = ""
 		for b in self.books:
