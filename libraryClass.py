@@ -24,7 +24,7 @@ class HashCode:
 
 	def __init__(self, numOfLibraries):
 		self.numOfLibraries = numOfLibraries
-	
+
 
 class LibraryClass:
 	timeToSignup = 0
@@ -46,7 +46,7 @@ class LibraryClass:
 
 	def check(self):
 		return len(self.books) == self.numOfBooks
-	
+
 	def getTotalValue(self):
 		total = 0
 		for b in self.books:
@@ -85,3 +85,54 @@ class Book:
 	def __init__(self, bookId, score):
 		self.bookId = bookId
 		self.score = score
+
+
+class Solution:
+	"""
+	list[ { library id: books } ]
+
+	Example:
+	[
+		{
+			0: [{Book 2}, {Book 3}]
+		},
+		{
+			0: [{Book 1}, {Book 4}]
+		},
+		{
+			1: [{Book 2}, {Book 3}]
+			2: [{Book 5}]
+			3: [{Book 2}, {Book 3}]
+		},
+		{
+			2: [{Book 1}]
+			3: [{Book 1}, {Book 2}, {Book 3}]
+		}
+	]
+	"""
+	time = []
+	ellasped_time = 0
+
+
+	def add_entry(scanning: dict):
+		self.time[-1].append(scanning)
+
+
+	def next():
+		self.ellasped_time += 1
+		self.time.append({})
+
+
+	def cost() -> int:
+		total_cost: int = 0
+
+		for day in self.time:
+			for library, books in day:
+				for book in books:
+					total_cost += book.score
+
+		return total_cost
+
+
+	def __init__(self):
+		self.time.append({})
