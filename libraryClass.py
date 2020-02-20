@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from typing import *
+
 
 class HashCode:
 	timeLimit = 0
@@ -7,7 +9,7 @@ class HashCode:
 	libraries = []
 
 	def check(self):
-		return len(libraries) == numOfLibraries
+		return len(self.libraries) == numOfLibraries
 
 	def addLibrary(self, lib):
 		self.libraries.append(lib)
@@ -89,7 +91,7 @@ class Book:
 
 class Solution:
 	"""
-	list[ { library id: books } ]
+	list[ { library_id: books } ]
 
 	Example:
 	[
@@ -110,24 +112,43 @@ class Solution:
 		}
 	]
 	"""
-	time = []
-	ellasped_time = 0
+	time: List = []
+	ellasped_time: int = 0
+	scanned_books: Dict = {}
 
 
-	def add_entry(scanning: dict):
-		self.time[-1].append(scanning)
+	def add_entry(self, day: dict):
+		self.time[-1].append(day)
+
+		for library_id, books in day:
+			if library_id not in self.scanned_books:
+				self.scanned_books[library_id] = [book.id for book in books]
+			else:
+				for book in books:
+					if book.id not in self.scanned_books[library_id]:
+						self.scanned_books[library_id].append(book.id)
 
 
-	def next():
+	def next(self):
 		self.ellasped_time += 1
 		self.time.append({})
 
 
-	def cost() -> int:
+	def libraries(self):
+		libraries: List = []
+
+		for day in self.time:
+			for library_id, books in day:
+				libraries.append(library)
+
+		return set(libraries)
+
+
+	def cost(self) -> int:
 		total_cost: int = 0
 
 		for day in self.time:
-			for library, books in day:
+			for library_id, books in day:
 				for book in books:
 					total_cost += book.score
 
