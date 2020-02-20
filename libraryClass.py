@@ -28,7 +28,7 @@ class HashCode:
 
 	def removeBookFromEveryLibs(self, bookId):
 		for l in self.libraries:
-			l.removeBook(bookId)
+			l.removeBookFromId(bookId)
 
 	def __str__(self):
 		output = f"Time limit = {self.timeLimit}"
@@ -47,7 +47,7 @@ class LibraryClass:
 	maxBooksPerDay = 0
 	libId = 0
 
-	def removeBook(self, bookId):
+	def removeBookFromId(self, bookId):
 		for b in self.books:
 			if b.bookId == bookId:
 				self.books.remove(b)
@@ -69,6 +69,9 @@ class LibraryClass:
 		for b in self.books:
 			total += b.score
 		return total
+
+	def getAverageValue(self):
+		return self.getTotalValue / len(self.books)
 
 	def getMostValuableBook(self):
 		score = 0
